@@ -25,11 +25,10 @@ function shuffle(array) {
     return array;
 }
 
-
 //countup timer code pattern from SIMPLECODE https://www.youtube.com/watch?v=0tNRHPeaVes
 var active = false;
 function startTimer() {
-  /***if (active) {***/
+  if (active) {
     var timer = document.getElementById("my_timer").innerHTML;
     var arr = timer.split(":");
     var hour = arr[0];
@@ -54,42 +53,36 @@ function startTimer() {
     document.getElementById("my_timer").innerHTML = hour+":"+min+":"+sec;
     setTimeout(startTimer, 1000);
   }
+}
 //this will start and pause timer through click
-/***function changeState() {
+function changeState() {
   if(active == false) {
     active = true;
-    startTime ();
+    startTimer();
     //console.log("timer has started");
-    document.getElementById("control").innerHTML = "PAUSE";
+    document.getElementById("start").innerHTML = "PAUSE";
   } else {
     active = false;
     //console.log("timer is on pause");
-    document.getElementById("control").innerHTML = "START";
+    document.getElementById("start").innerHTML = "START";
   }
-}***/
+}
 
-//reset function below for later use
+// reset function below
 function reset() {
-  document.getElementById("my_timer").innerHTML = 00+":"+00+":"+00;
-  //console.log("timer has been reset");
+  document.getElementById("my_timer").innerHTML = "00"+ ":" +"00"+ ":" +"00";
 }
 
 const newTrigger = document.getElementById('start');
 newTrigger.addEventListener('click', function(e) {
-  startTimer();
+  changeState();
 });
 
 
-/***const resetTrigger = document.getElementById('reset');
-newTrigger.addEventListener('click', function(e) {
+const iconReset = document.getElementById('reset');
+iconReset.addEventListener('click', function(e) {
   reset();
-});***/ // this is for later time to create a pause button for the game
-
-/***const clickme2 = document.getElementById('allDeck');
-clickme2.addEventListener('click', function(e) {
-  console.log("you have clicked the deck");
-});***/
-
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:

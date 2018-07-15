@@ -84,6 +84,16 @@ iconReset.addEventListener('click', function(e) {
   reset();
 });
 
+//function to select card from classList and do toggle open or show or hide
+const newDeck = document.querySelector('.deck');
+newDeck.addEventListener('click', event => {
+  const pickCard = event.target;
+  if (pickCard.classList.contains('card')) {
+    pickCard.classList.toggle('open');
+    pickCard.classList.toggle('show');
+  }
+});
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)

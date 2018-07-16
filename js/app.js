@@ -89,10 +89,15 @@ const newDeck = document.querySelector('.deck');
 newDeck.addEventListener('click', event => {
   const pickCard = event.target;
   if (pickCard.classList.contains('card')) {
-    pickCard.classList.toggle('open');
-    pickCard.classList.toggle('show');
+    flipCard(pickCard);
   }
 });
+
+//function to flip card open
+function flipCard(pickCard) {
+  pickCard.classList.toggle('open');
+  pickCard.classList.toggle('show');
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:

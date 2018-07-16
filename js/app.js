@@ -142,6 +142,8 @@ const deck = document.querySelector('.deck');
 for (card of shuffledarraylistCards) {
   deck.appendChild(card);
 }
+
+//function to shuffle arraylistCards is above
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)

@@ -128,6 +128,20 @@ function compareTwoCards () {
   }, 1200);
   }   
 }
+
+//function to list the card in array form
+const listCards = document.getElementsByClassName("card");
+//console.log(listCards);
+
+for (var i = 0; i < listCards.length; i++) {
+  var arraylistCards = Array.from(listCards); //converts htmlcollection to array
+}
+//console.log(arraylistCards);
+var shuffledarraylistCards = shuffle(arraylistCards);
+const deck = document.querySelector('.deck');
+for (card of shuffledarraylistCards) {
+  deck.appendChild(card);
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)

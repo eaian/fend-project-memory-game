@@ -9,7 +9,7 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-
+let twoCards =[];
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -88,10 +88,12 @@ iconReset.addEventListener('click', function(e) {
 const newDeck = document.querySelector('.deck');
 newDeck.addEventListener('click', event => {
   const pickCard = event.target;
-  if (pickCard.classList.contains('card')) {
+  if (!pickCard.classList.contains('match') && !pickCard.classList.contains('open') && twoCards.length <2 && !twoCards.includes(pickCard)) {
     flipCard(pickCard);
+    addCardsArray(pickCard);
   }
 });
+
 
 //function to flip card open
 function flipCard(pickCard) {
@@ -99,6 +101,33 @@ function flipCard(pickCard) {
   pickCard.classList.toggle('show');
 }
 
+//stores open cards and compares
+function addCardsArray(pickCard) {
+  twoCards.push(pickCard);
+  if (twoCards.length === 2) {
+    console.log(twoCards);
+    compareTwoCards();
+    
+  }
+}
+//function to compare two cards in the array
+function compareTwoCards () {
+  if (twoCards[0].firstElementChild.className === twoCards[1].firstElementChild.className) {
+    console.log("MATCHING CARDS!!!");
+    twoCards[0].classList.toggle('match');
+    twoCards[1].classList.toggle('match');
+    console.log(twoCards);
+    twoCards = [];
+  }else {
+    console.log("sorry try again");      
+    setTimeout(() => {      //start on this line and below adds delay to flip the card to close
+    flipCard(twoCards[0]);
+    flipCard(twoCards[1]);
+    console.log(twoCards);
+    twoCards = [];  
+  }, 1200);
+  }   
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)

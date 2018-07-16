@@ -10,6 +10,7 @@
  *   - add each card's HTML to the page
  */
 let twoCards =[];
+let moves = 0;
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -112,6 +113,7 @@ function addCardsArray(pickCard) {
 }
 //function to compare two cards in the array
 function compareTwoCards () {
+  countMoves();
   if (twoCards[0].firstElementChild.className === twoCards[1].firstElementChild.className) {
     console.log("MATCHING CARDS!!!");
     twoCards[0].classList.toggle('match');
@@ -143,6 +145,12 @@ for (card of shuffledarraylistCards) {
   deck.appendChild(card);
 }
 
+//function below is increment moves +1 whenever comparing cards happen
+function countMoves() {
+  moves++
+  document.getElementById('countedMoves').innerHTML = moves; //update the counted Moves
+  console.log(moves);
+}
 //function to shuffle arraylistCards is above
 /*
  * set up the event listener for a card. If a card is clicked:

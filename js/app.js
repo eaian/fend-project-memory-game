@@ -13,7 +13,8 @@ let twoCards =[];
 let moves = 0;
 let starcount = 3;
 let listStars = document.querySelectorAll("ul.stars li");
-let active = false;
+let matchingCards = 0;
+//let active = false;
 
 /*** const restartGame = document.getElementById('reset');
 restartGame.addEventListener('click', function (e) {
@@ -23,12 +24,12 @@ restartGame.addEventListener('click', function (e) {
   
 //console.log(listCards);
 const iconReset = document.getElementById('reset');
+var active = false;
 iconReset.addEventListener('click', function(e) {
-  e.preventDefault();
-  /***if (active == true && moves > 0) {
-    function reloadPage();
-  }else if {
-    ***/
+  //e.preventDefault();
+  /***if (moves > 0) {
+    reloadPage();
+  }else {}***/
     document.getElementById("my_timer").innerHTML = "00"+ ":" +"00"+ ":" +"00";
     active = true;
     startTimer();
@@ -46,7 +47,6 @@ iconReset.addEventListener('click', function(e) {
       }
     }reloadPage();
 });
-
 
 
 //function below reloads the page by JQuery
@@ -122,8 +122,8 @@ function startTimer() {
     setTimeout(startTimer, 1000);
   }
 }
-/*** //this will start and pause timer through click
-function changeState() {
+//this will start and pause timer through click
+/***function changeState() {
   if(active == false && moves == 0) {
     active = true;
     startTimer();
@@ -137,7 +137,7 @@ function changeState() {
     active = false;
     //console.log("timer is on pause");
     document.getElementById("start").innerHTML = "RESUME";
-  }****/
+  }***/
 
 /*** // reset function below
 function resetTimer() {
@@ -147,14 +147,18 @@ function resetTimer() {
 /***function startPause() {
 const newTrigger = document.getElementById('start');
 newTrigger.addEventListener('click', function(e) {
-  changeState();
+  if(active == false && moves == 0) {
+    active = true;
+    startTimer();
+    //console.log("timer has started");
+    document.getElementById("start").innerHTML = "PAUSE";
+  }else {
+     //console.log("timer is on pause");
+     document.getElementById("start").innerHTML = "PAUSE";
+  }
+  //changeState();
 });
 }***/
-
-/***const iconReset = document.getElementById('reset');
-iconReset.addEventListener('click', function(e) {
-  reset();
-});****/
 
 //function to select card from classList and do toggle open or show or hide
 const newDeck = document.querySelector('.deck');
@@ -194,8 +198,13 @@ function compareTwoCards () {
     twoCards[0].classList.toggle('match');
     twoCards[1].classList.toggle('match');
     console.log(twoCards);
+    matchingCards++;
     twoCards = [];
-  }else {
+    //console.log(matchingCards);
+    if (matchingCards == 2) {
+      showModal(); 
+    }
+   }else {
     console.log("sorry try again");      
     setTimeout(() => {      //start on this line and below adds delay to flip the card to close
     flipCard(twoCards[0]);
@@ -206,6 +215,11 @@ function compareTwoCards () {
   }   
 }
 
+
+//function showModal below
+function showModal() {
+  console.log("Modal is Triggered" + "matching pairs are " + matchingCards);
+}
 
 //function below is increment moves +1 whenever comparing cards happen
 function countMoves() {

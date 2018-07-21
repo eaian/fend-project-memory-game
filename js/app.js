@@ -13,6 +13,71 @@ let twoCards =[];
 let moves = 0;
 let starcount = 3;
 let listStars = document.querySelectorAll("ul.stars li");
+let active = false;
+
+/*** const restartGame = document.getElementById('reset');
+restartGame.addEventListener('click', function (e) {
+  //e.preventDefault();
+  //var active = false;
+  //reset(); ****/
+  
+//console.log(listCards);
+const iconReset = document.getElementById('reset');
+iconReset.addEventListener('click', function(e) {
+  e.preventDefault();
+  /***if (active == true && moves > 0) {
+    function reloadPage();
+  }else if {
+    ***/
+    document.getElementById("my_timer").innerHTML = "00"+ ":" +"00"+ ":" +"00";
+    active = true;
+    startTimer();
+    //console.log("timer has started");
+    document.getElementById("start").innerHTML = "PAUSE";
+    //resetTimer();
+    //startTimer();
+    const listCards = document.getElementsByClassName("card");
+    for (var i = 0; i < listCards.length; i++) {
+      var arraylistCards = Array.from(listCards); //converts htmlcollection to array
+      var shuffledarraylistCards = shuffle(arraylistCards);
+      const deck = document.querySelector('.deck');
+      for (card of shuffledarraylistCards) {
+        deck.appendChild(card);
+      }
+    }reloadPage();
+});
+
+
+
+//function below reloads the page by JQuery
+function reloadPage() {
+  $('#reset').click (function() {
+      location.reload();
+    });
+}
+
+/**** //console.log(arraylistCards);
+  var shuffledarraylistCards = shuffle(arraylistCards);
+  const deck = document.querySelector('.deck');
+  for (card of shuffledarraylistCards) {
+  deck.appendChild(card);
+  } ****/
+
+/**** //function to list the card in array form
+
+const listCards = document.getElementsByClassName("card");
+//console.log(listCards);
+
+for (var i = 0; i < listCards.length; i++) {
+  var arraylistCards = Array.from(listCards); //converts htmlcollection to array
+}
+//console.log(arraylistCards);
+var shuffledarraylistCards = shuffle(arraylistCards);
+const deck = document.querySelector('.deck');
+for (card of shuffledarraylistCards) {
+  deck.appendChild(card);
+}****/
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -29,7 +94,7 @@ function shuffle(array) {
 }
 
 //countup timer code pattern from SIMPLECODE https://www.youtube.com/watch?v=0tNRHPeaVes
-var active = false;
+//var active = false;
 function startTimer() {
   if (active) {
     var timer = document.getElementById("my_timer").innerHTML;
@@ -57,43 +122,50 @@ function startTimer() {
     setTimeout(startTimer, 1000);
   }
 }
-//this will start and pause timer through click
+/*** //this will start and pause timer through click
 function changeState() {
-  if(active == false) {
+  if(active == false && moves == 0) {
     active = true;
     startTimer();
     //console.log("timer has started");
     document.getElementById("start").innerHTML = "PAUSE";
-  } else {
+  } else if (active == true && moves == 0) {
+    startTimer();
+    //console.log("timer is on pause");
+    document.getElementById("start").innerHTML = "PAUSE";
+  }else {
     active = false;
     //console.log("timer is on pause");
-    document.getElementById("start").innerHTML = "START";
-  }
-}
+    document.getElementById("start").innerHTML = "RESUME";
+  }****/
 
-// reset function below
-function reset() {
+/*** // reset function below
+function resetTimer() {
   document.getElementById("my_timer").innerHTML = "00"+ ":" +"00"+ ":" +"00";
-}
+}****/
 
+/***function startPause() {
 const newTrigger = document.getElementById('start');
 newTrigger.addEventListener('click', function(e) {
   changeState();
 });
+}***/
 
-
-const iconReset = document.getElementById('reset');
+/***const iconReset = document.getElementById('reset');
 iconReset.addEventListener('click', function(e) {
   reset();
-});
+});****/
 
 //function to select card from classList and do toggle open or show or hide
 const newDeck = document.querySelector('.deck');
 newDeck.addEventListener('click', event => {
   const pickCard = event.target;
-  if (!pickCard.classList.contains('match') && !pickCard.classList.contains('open') && twoCards.length <2 && !twoCards.includes(pickCard)) {
+  //startTimer();
+  if(active == true) {
+    if (!pickCard.classList.contains('match') && !pickCard.classList.contains('open') && twoCards.length <2 && !twoCards.includes(pickCard)) {
     flipCard(pickCard);
     addCardsArray(pickCard);
+    }
   }
 });
 
@@ -110,9 +182,10 @@ function addCardsArray(pickCard) {
   if (twoCards.length === 2) {
     console.log(twoCards);
     compareTwoCards();
-    
   }
 }
+
+
 //function to compare two cards in the array
 function compareTwoCards () {
   countMoves();
@@ -129,23 +202,10 @@ function compareTwoCards () {
     flipCard(twoCards[1]);
     console.log(twoCards);
     twoCards = [];  
-  }, 1200);
+    }, 1200);
   }   
 }
 
-//function to list the card in array form
-const listCards = document.getElementsByClassName("card");
-//console.log(listCards);
-
-for (var i = 0; i < listCards.length; i++) {
-  var arraylistCards = Array.from(listCards); //converts htmlcollection to array
-}
-//console.log(arraylistCards);
-var shuffledarraylistCards = shuffle(arraylistCards);
-const deck = document.querySelector('.deck');
-for (card of shuffledarraylistCards) {
-  deck.appendChild(card);
-}
 
 //function below is increment moves +1 whenever comparing cards happen
 function countMoves() {
@@ -160,11 +220,13 @@ function removeStar () {
     listStars[2].remove();
     starcount = (listStars.length - 1);
   }else if (moves >= 14) {
-    listStars[2].remove();
-    listStars[1].remove();
-    starcount = (listStars.length - 2);
-  }
+     listStars[2].remove();
+     listStars[1].remove();
+     starcount = (listStars.length - 2);
+   }
 }
+
+
 //function to shuffle arraylistCards is above
 /*
  * set up the event listener for a card. If a card is clicked:

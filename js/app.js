@@ -11,6 +11,8 @@
  */
 let twoCards =[];
 let moves = 0;
+let starcount = 3;
+let listStars = document.querySelectorAll("ul.stars li");
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -150,6 +152,18 @@ function countMoves() {
   moves++
   document.getElementById('countedMoves').innerHTML = moves; //update the counted Moves
   console.log(moves);
+  removeStar();
+}
+
+function removeStar () {
+  if (moves >= 10 && moves < 14) {
+    listStars[2].remove();
+    starcount = (listStars.length - 1);
+  }else if (moves >= 14) {
+    listStars[2].remove();
+    listStars[1].remove();
+    starcount = (listStars.length - 2);
+  }
 }
 //function to shuffle arraylistCards is above
 /*

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Matching Game</title>
+    <meta content="" name="description">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet prefetch">
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet prefetch">
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Matching Game by E</h1>
+        </header>
+        <section class="score-panel">
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul><span class="moves" id="countedMoves">0</span> Moves
+            <div class="restart">
+                <span id="my_timer">00:00:00</span> <i class="fa fa-repeat" id="reset"></i>
+            </div>
+        </section>
+        <ul class="deck" id="allDeck">
+            <li class="card"><i class="fa fa-diamond"></i></li>
+            <li class="card"><i class="fa fa-paper-plane-o"></i></li>
+            <li class="card"><i class="fa fa-anchor"></i></li>
+            <li class="card"><i class="fa fa-bolt"></i></li>
+            <li class="card"><i class="fa fa-cube"></i></li>
+            <li class="card"><i class="fa fa-anchor"></i></li>
+            <li class="card"><i class="fa fa-leaf"></i></li>
+            <li class="card"><i class="fa fa-bicycle"></i></li>
+            <li class="card"><i class="fa fa-diamond"></i></li>
+            <li class="card"><i class="fa fa-bomb"></i></li>
+            <li class="card"><i class="fa fa-leaf"></i></li>
+            <li class="card"><i class="fa fa-bomb"></i></li>
+            <li class="card"><i class="fa fa-bolt"></i></li>
+            <li class="card"><i class="fa fa-bicycle"></i></li>
+            <li class="card"><i class="fa fa-paper-plane-o"></i></li>
+            <li class="card"><i class="fa fa-cube"></i></li>
+        </ul>
+    </div>
+    <div class="modal_body hide">
+        <div class="modal_heading"></div>
+        <div class="modal_stats">
+            <h1 class="modal_title">Game Completed!</h1><span class="modal_time" id="modalTime">Time =</span> <span class="modal_moves">Moves =</span> <span class="modal_stars" id="modalStars">Stars =</span>
+        </div>
+        <div class="modal_buttons">
+            <button class="button_close">Close</button> <button class="button_play">Play Again</button>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script> 
+    <script src="js/app.js">
+    </script>
+</body>
+</html>

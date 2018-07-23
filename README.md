@@ -2,19 +2,24 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Project_Title](#Project_Title)
+* [Instructions](#Instructions)
+* [Acknowledgements](#Acknowledgements)
+
+## Project_Title
+
+This is a project for a Memory Game that utilizes JQuery, Javascript and DOM.
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This game will start as the player click the restart button on upper right portion of the board game. 
+There are 16 cards to match (a total of 8 pairs). 
+Once completed a score card would appear showing your scores based on star count, time duration and number of moves (selection of 2 cards for a pair is counted as 1 move). 
+To close the window for score card hit "Close" or "Play Again" to refresh the page so you could start again ("Don't forget to hit Restart Button). 
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Acknowledgements
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+Big Thank You! to the following:
+Matt Cranford Walkthrough: https://matthewcranford.com/memory-game-walkthrough-part-1-setup/
+and SIMPLECODE https://www.youtube.com/watch?v=0tNRHPeaVes for my countup timer
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
